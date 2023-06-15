@@ -16,10 +16,6 @@ fake_raw['category'] = fake_raw['category'].replace(' ', '_', regex = True)
 
 # Label encoder
 encode_dict = {}
-def encode_cat(x):
-  if x not in encode_dict.keys():
-      encode_dict[x]=len(encode_dict)
-  return encode_dict[x]
 fake_raw['encoded_cat'] = fake_raw['category'].apply(lambda x: encode_cat(x))
 
 # Drop rows that low frequency in category
@@ -31,3 +27,8 @@ fake_raw.dropna(axis = 0, inplace = True, subset = ['encoded_cat'])
 # Reset label dict
 encode_dict = {}
 fake_raw['encoded_cat'] = fake_raw['category'].apply(lambda x: encode_cat(x))
+# Normalizing texts
+fake_raw['description'] = fake_raw['description'].progress_apply(lambda x: normalize_data(x))
+
+# Save in pickle format
+_save_pkl('/content/drive/My Drive/data/fake_data_cleaned.pkl', fake_raw)
