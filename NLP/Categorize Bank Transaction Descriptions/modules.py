@@ -95,7 +95,6 @@ def evaluate(model, test_data):
               test_label = test_label.to(device)
               mask = test_input['attention_mask'].to(device)
               input_id = test_input['input_ids'].squeeze(1).to(device)
-              model
               output = model(input_id, mask)
               acc = (output.argmax(dim=1) == test_label).sum().item()
               total_acc_test += acc
