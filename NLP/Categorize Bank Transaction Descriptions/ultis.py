@@ -1,5 +1,6 @@
 import re
 import pandas as pd 
+import pickle
 
 def preprocess_xlsx(df, is_fake = True):
   df.columns = df.columns.str.lower()
@@ -33,3 +34,12 @@ def normalize_data(row):
   # Remove date in sentences
   row = re.sub(r"^(?:(?:[0-9]{2}[\/,]){2}[0-9]{2,4})$|\d+/\d+", "", str(row))
   return row
+
+def _save_pkl(path, obj):
+  with open(path, 'wb') as f:
+    pickle.dump(obj, f)
+
+def _load_pkl(path):
+  with open(path, 'rb') as f:
+    obj = pickle.load(f)
+  return obj
