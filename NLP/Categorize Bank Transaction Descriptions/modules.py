@@ -74,7 +74,7 @@ def train_on_epoch(model, train_data, val_data, learning_rate, epochs):
     return train_loss_hist, train_acc_hist, val_loss_hist, val_acc_hist
   
   
-def evaluate(model, test_data):
+def evaluate(model, test_data, return_prob = True):
 
     test = Dataset(test_data)
 
@@ -96,10 +96,13 @@ def evaluate(model, test_data):
               mask = test_input['attention_mask'].to(device)
               input_id = test_input['input_ids'].squeeze(1).to(device)
               output = model(input_id, mask)
+              if return_prob:
+                output_prob = F.softmax(output, dim = 1)
+                output_prob = output_prob.detach().cpu().numpy()
               acc = (output.argmax(dim=1) == test_label).sum().item()
               total_acc_test += acc
               output = output.argmax(dim = 1).detach().cpu().numpy()
               preds = np.concatenate([preds, output], axis = 0)
 
     print(f'Test Accuracy: {total_acc_test / len(test_data): .3f}')
-    return preds, total_acc_test
+    return preds, total_acc_test, output_prob
