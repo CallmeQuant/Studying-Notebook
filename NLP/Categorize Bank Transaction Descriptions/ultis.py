@@ -19,6 +19,11 @@ def encode_cat(x):
       encode_dict[x]=len(encode_dict)
   return encode_dict[x]
 
+def decode_cat(x):
+  for key, value in encode_dict.items():
+    if x == value:
+      return key
+    
 def normalize_data(row):
   # Lowering sentence
   row = row.lower()
