@@ -72,17 +72,19 @@ for key, value in result_fold.items():
   sum_acc += value
 print(f'Average accuracy validation: {sum_acc/len(result_fold.items())} %')
 
-# Predicting on test set
+# Predict on test set
 predict_ensem = []
 avg_acc = []
+predict_prob_ensem = {}
 for fold in range(N_FOLDS):
   print(f"Predicting for fold {fold}")
-  label_pred, acc_test = evaluate(model_bert, df_test)
+  label_pred, acc_test, prob_pred = evaluate(model_bert, df_test)
   print('-'*80)
   predict_ensem.append(label_pred)
   avg_acc.append(acc_test)
+  predict_prob_ensem[fold] = prob_pred
 
 print(f'CROSS VALIDATION RESULTS FOR 5 FOLDS TEST SET')
 print('----------------------------------------------')
 
-print(f'Average accuracy test: {sum(avg_acc)/len(avg_acc)} %')
+print(f'Average accuracy test: {100 * sum(np.array(avg_acc)/len(df_test.encoded_cat)) / len(avg_acc) } %')
