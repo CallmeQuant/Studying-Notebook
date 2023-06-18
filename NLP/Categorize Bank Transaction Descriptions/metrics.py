@@ -49,7 +49,7 @@ def false_negative(y_true, y_pred):
 
 def micro_recall(y_true, y_pred):
     """
-    Function to compute Micro-averaged Recall
+    Function to compute Micro-averaged Recall OvR (One-Over-Rest)
     """
     # number of classes
     num_classes = len(np.unique(y_true))
@@ -79,7 +79,7 @@ def micro_recall(y_true, y_pred):
 
 def micro_precision(y_true, y_pred):
     """
-    Function to compute the Micro-averaged Precision
+    Function to compute the Micro-averaged Precision OvR (One-Over-Rest)
     :param y_true:
     :param y_pred:
     :return:
@@ -112,7 +112,7 @@ def micro_precision(y_true, y_pred):
 
 def micro_f1(y_true, y_pred):
     """
-    Function to compute the Micro-averaged F1 score
+    Function to compute the Micro-averaged F1 score OvR (One-Over-Rest)
     """
     # micro-averaged precision score
 
@@ -128,7 +128,7 @@ def micro_f1(y_true, y_pred):
 
 def macro_f1(y_true, y_pred):
     """
-    Function to compute the Macro-averaged F1 score
+    Function to compute the Macro-averaged F1 score OvR (One-Over-Rest)
     """
     # number of classes
     num_classes = len(np.unique(y_true))
