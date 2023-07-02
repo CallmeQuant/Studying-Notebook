@@ -1,6 +1,6 @@
 def update_normal(prior_mean, prior_var, data, known_var):
   """
-  Estimating normal distribution parameters with unknown `$\mu$` and known `$\sigma^2$`
+  Estimating normal distribution parameters with unknown `mean` and known `variance`
 
   Parameters
   ----------
