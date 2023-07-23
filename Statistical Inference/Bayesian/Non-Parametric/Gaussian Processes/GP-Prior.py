@@ -22,17 +22,25 @@ def create_cov(n, kernel_func):
 
   return K
 
-fig, axes = plt.subplots(1, 3, figsize = (16, 8))
+fig, axes = plt.subplots(1, 3, figsize = (10, 5))
 cov_funcs = [squared_exponential_kernel, periodic_kernel, linear_kernel]
 n_samples = 400
-n_priors  = 20
+n_priors  = 10
 X         = np.linspace(-5, 5, n_samples)
 
-for kernel, ax in zip(cov_funcs, axes):
+for i, (kernel, ax) in enumerate(zip(cov_funcs, axes)):
   mean = np.zeros(n_samples)
   cov = create_cov(n_samples, kernel)
-  for _ in range(n_priors + 1):
+  for samps in range(n_priors):
     f = np.random.multivariate_normal(mean, cov)
     ax.plot(np.arange(n_samples), f)
+    if i == 0 and samps == (n_priors - 1):
+      ax.set_title(label = 'Squared Exponential')
+    
+    if i == 1 and samps == (n_priors - 1):
+      ax.set_title(label = 'Periodic')
+
+    if i == 2 and samps == (n_priors - 1):
+      ax.set_title(label = 'Linear')
 
 plt.show()
