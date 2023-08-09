@@ -17,7 +17,7 @@ class PCA:
 
     def fit_transform(self, X):
         """
-        Performing the standard following steps:
+        Performing the following standard steps:
         + Centering our inputs with mean (For each observation, subtract it with its corresponding mean across column)
         + Finding covariance matrix using mean-centered tensor (Cov(X) = 1\n-1 X^T X
         + Finding eigenvalue and eigenvector using provided torch function, i.e.,torch.eig()
