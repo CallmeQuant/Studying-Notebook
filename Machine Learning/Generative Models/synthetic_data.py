@@ -5,7 +5,7 @@ def synthetic_data(dataset_name, n_samples=4000, noise=0.05, dtype=np_dtype):
     scaler = MinMaxScaler()
     if dataset_name == "Moons":
         x, _ = make_moons(n_samples, noise=noise)
-    elif dataset_name == "EightGaussians":
+    elif dataset_name == "Circle of Gaussians":
         sq_2 = np.sqrt(2)
         c_s = 5.
         centers = [(1, 0), (-1, 0), (0, 1), (0, -1),
@@ -61,7 +61,7 @@ custom_params = {'font.family': 'serif',
  'figure.dpi': 150}
 
 # Create dataset dictionary
-dataset_names = ["Moons", "EightGaussians", "SwissRoll", "PinWheel"]
+dataset_names = ["Moons", "Circle of Gaussians", "SwissRoll", "PinWheel"]
 datasets = {name: make_synthetic_data(name) for name in dataset_names}
 
 plt.rcParams.update(custom_params)
