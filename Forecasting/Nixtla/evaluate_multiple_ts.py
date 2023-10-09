@@ -6,6 +6,7 @@
 
 from datasetsforecast.losses import mse, mae, smape, mape
 from typing import List, Callable
+import pandas as pd
 
 metrics = [mse, mae, smape, mape]
 
