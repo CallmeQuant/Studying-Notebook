@@ -1,6 +1,6 @@
 import torch
 import torch.nn as nn
-import torch.optim as optim # optimization algo
+import torch.optim as optim
 import torchvision
 from torchvision import datasets, transforms
 from tqdm import tqdm
@@ -25,7 +25,7 @@ validation_loader = torch.utils.data.DataLoader(validation_dataset, batch_size=6
 test_loader = torch.utils.data.DataLoader(test_data, batch_size=64, shuffle=False)
 
 # for test_images, test_labels in test_loader:
-#     sample_image = test_images[0]    # Reshape them according to your needs.
+#     sample_image = test_images[0]  
 #     sample_label = test_labels[0]
 #     print(sample_image.shape)
 #     print(sample_label.shape)
