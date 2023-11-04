@@ -3,7 +3,7 @@ An example to solve (Capacitated) Vehicle Routing Problem. In CVRPT, a number of
 the depot to refill its capacity. 
 
 # Dependencies
-You can create an environment with the requirements.txt file 
+You can create an environment with the `requirements.txt` file 
 
 ## How to run
 To run the default version
@@ -37,4 +37,4 @@ The dynamic updates in this project are as follows:
 i. If a vehicle visits a city, its load changes according to the formula: Load = (Load - Demand_i)+. The demand at the city changes according to: Demand_i = (Demand_i - load)+. This means that the vehicle's load decreases by the city's demand, and the city's demand decreases by the amount of load delivered.
 
 # References
-![Reinforcement Learning for Solving the Vehicle Routing Problem](https://arxiv.org/abs/1802.04240v2)
+Nazari, Mohammadreza, et al. "Deep Reinforcement Learning for Solving the Vehicle Routing Problem." arXiv preprint arXiv:1802.04240 (2018).
