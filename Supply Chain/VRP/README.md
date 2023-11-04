@@ -28,11 +28,10 @@ python3 main.py --nodes 20 --checkpoint 20 --test True
 The Vehicle Routing Problem (VRP) involves a scenario where a vehicle or salesman visits various cities/customers, each with a randomly assigned demand ranging from 1 to 9. The vehicle starts with a certain capacity that varies based on the complexity of the problem, such as the maximum capacity.
 
 The VRP uses a specific masking scheme to generate feasible solution space:
-
-  i. If no city has any remaining demand, the tour ends. This implies that the vehicle must return to the depot to complete the tour.
-  ii. The vehicle can visit any city, provided it can fully meet the city's demand. This can be modified to allow for partial trips if necessary.
-  iii. The vehicle is not allowed to visit the depot more than once consecutively, which helps speed up training.
-  iv. The vehicle can only visit the depot twice or more in a row if it has completed its route and is waiting for other vehicles to finish (e.g., training in a minibatch setting).
+  1. If no city has any remaining demand, the tour ends. This implies that the vehicle must return to the depot to complete the tour.
+  2. The vehicle can visit any city, provided it can fully meet the city's demand. This can be modified to allow for partial trips if necessary.
+  3. The vehicle is not allowed to visit the depot more than once consecutively, which helps speed up training.
+  4. The vehicle can only visit the depot twice or more in a row if it has completed its route and is waiting for other vehicles to finish (e.g., training in a minibatch setting).
 
 The dynamic updates in this project are as follows:
 i. If a vehicle visits a city, its load changes according to the formula: Load = (Load - Demand_i)+. The demand at the city changes according to: Demand_i = (Demand_i - load)+. This means that the vehicle's load decreases by the city's demand, and the city's demand decreases by the amount of load delivered.
