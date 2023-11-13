@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+<<<<<<< HEAD
   <component name="Black">
     <option name="sdkName" value="r-envs-alpha" />
   </component>
+=======
+>>>>>>> origin/main
   <component name="ProjectRootManager" version="2" project-jdk-name="r-envs-alpha" project-jdk-type="Python SDK" />
 </project>
